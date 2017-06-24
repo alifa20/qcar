@@ -1,0 +1,2 @@
+export const LOAD_CAR_OW_SUCCESS = 'LOAD_CAR_OW_SUCCESS';
+export const LOAD_CAR_OW_ERROR = 'LOAD_CAR_OW_ERROR';
