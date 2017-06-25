@@ -24,6 +24,7 @@ type Model {
 type CarOW {
   modelId: ID!
   review: String
+  model: Model
 }
 
 type Query {

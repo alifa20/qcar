@@ -7,12 +7,13 @@ import cssModules from 'react-css-modules';
 import styles from './index.scss';
 
 const Car = props => {
-  if (!props.car || !props.car.make) { return null }
+  if (!props.car || !props.car.make) { return null; }
   return (
     <div>
       <h1>{props.car.make.name} - {props.car.name}</h1>
-      <p>{props.car.price}</p>
-      <img src={props.car.imageUrl} width="300px" />
+      <span>Price:</span>
+      <p>${props.car.price}</p>
+      <img src={props.car.imageUrl} width="300px" alt={props.car.make.name} />
     </div>
   )
 };

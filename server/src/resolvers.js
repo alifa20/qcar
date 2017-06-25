@@ -14,7 +14,7 @@ export const resolvers = {
     },
     model: (_, args) => {
       console.log('model called');
-      
+
       const model = models.find(model => model.id === args.id);
       return Object.assign({}, model,
         { make: makes.find(make => make.id === model.makeId) })
@@ -23,7 +23,12 @@ export const resolvers = {
       Object.assign({}, make,
         { models: models.filter(model => model.makeId === +make.id) })),
     carOfTheWeek: () => {
-      return carOW;
+      console.log('carOfTheWeek called');
+      const model = models.find(model => +model.id === +carOW.modelId);
+      const make = makes.find(make => make.id === model.makeId);
+      const reviewModel = Object.assign({}, model, { make })
+      return Object.assign({}, carOW,
+        { model: reviewModel });
     },
   }
 };

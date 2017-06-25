@@ -11,14 +11,21 @@ export function loadCarOWSuccess(review) {
 export function loadCarOWError(error) {
   return { type: types.LOAD_CAR_OW_ERROR, error };
 }
+
 export function loadCarOfTheWeek() {
   const query = `
-            query getCarOfTheWeek {
-              carOfTheWeek {
-                modelId
-                review
+          query getCarOfTheWeek {
+            carOfTheWeek {
+              review
+              model {
+                name
+                imageUrl
+                make {
+                  name
+                }
               }
             }
+          }
         `;
   return dispatch => axios.post(GraphQLEndpoint, {
     query,
