@@ -1,3 +1,5 @@
 export default {
-  carOw: {}
+  carOw: {},
+  makes: [],
+  models: []
 };

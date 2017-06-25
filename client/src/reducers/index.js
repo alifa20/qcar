@@ -1,14 +1,16 @@
-import {combineReducers} from 'redux';
-import { routerReducer } from 'react-router-redux'
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import client from '../apolloClient';
-import counter from './counter'
-import carOw from './carOwReducer'
+import carOw from './carOwReducer';
+import makes from './makesReducer';
+import models from './modelsReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
   apollo: client.reducer(),
-  counter,
-  carOw
+  carOw,
+  makes,
+  models
 });
 
 export default rootReducer;

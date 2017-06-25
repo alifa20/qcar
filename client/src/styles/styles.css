@@ -14,3 +14,7 @@ a.active {
 nav {
   padding-top: 20px;
 }
+
+.top-margin {
+  margin-top: 20px;
+}

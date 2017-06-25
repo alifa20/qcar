@@ -9,6 +9,7 @@ const typeDefs = `
 type Make {
   id: ID!                # "!" denotes a required field
   name: String
+  models: [Model]
 }
 
 type Model {
@@ -26,7 +27,7 @@ type CarOW {
 
 type Query {
   makes: [Make]
-  models: [Model]
+  models(makeId: Int): [Model]
   carOfTheWeek: CarOW
 }
 
