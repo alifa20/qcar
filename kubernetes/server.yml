@@ -1,0 +1,58 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: server
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      name: server
+  template:
+    metadata:
+      labels:
+        name: server
+    spec:
+      containers:
+        - name: server
+          image: <docker-repository>/server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3011
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: staging
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3011
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3011
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: server
+  labels:
+    name: server
+
+spec:
+  ports:
+    - port: 80
+      name: http
+      targetPort: 3011
+    - port: 443
+      protocol: TCP
+      name: https
+      targetPort: 3011
+  selector:
+    name: server
+  type: LoadBalancer
