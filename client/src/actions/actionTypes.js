@@ -4,5 +4,6 @@ export const APOLLO_QUERY_RESULT = 'APOLLO_QUERY_RESULT';
 
 export const operation = {
   getMakes: 'getmakes',
-  getModels: 'getmodels'
+  getModels: 'getmodels',
+  getModel: 'getmodel'
 };

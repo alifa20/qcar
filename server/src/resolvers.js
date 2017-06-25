@@ -12,13 +12,16 @@ export const resolvers = {
       }
       return models.filter(model => model.makeId === +args.makeId);
     },
-    makes: () => {
-      return makes.map(make => {
-        return Object.assign({},
-          make,
-          { models: models.filter(model => model.makeId === +make.id) })
-      });
+    model: (_, args) => {
+      console.log('model called');
+      
+      const model = models.find(model => model.id === args.id);
+      return Object.assign({}, model,
+        { make: makes.find(make => make.id === model.makeId) })
     },
+    makes: () => makes.map(make =>
+      Object.assign({}, make,
+        { models: models.filter(model => model.makeId === +make.id) })),
     carOfTheWeek: () => {
       return carOW;
     },

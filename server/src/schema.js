@@ -15,6 +15,7 @@ type Make {
 type Model {
   id: ID!
   makeId: Int
+  make: Make
   name: String
   price: Int
   imageUrl: String
@@ -27,7 +28,8 @@ type CarOW {
 
 type Query {
   makes: [Make]
-  models(makeId: Int): [Model]
+  models(id: Int): [Model]
+  model(id: Int): Model
   carOfTheWeek: CarOW
 }
 
