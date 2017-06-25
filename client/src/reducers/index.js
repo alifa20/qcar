@@ -4,7 +4,7 @@ import client from '../apolloClient';
 import carOw from './carOwReducer';
 import makes from './makesReducer';
 import models from './modelsReducer';
-import car from './carReducer';
+import carDetailsList from './carDetailsListReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   carOw,
   makes,
   models,
-  car
+  carDetailsList
 });
 
 export default rootReducer;
